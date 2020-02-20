@@ -45,9 +45,6 @@ public class ClienteController {
 	public Clientes save(@RequestBody Clientes clientes, @PathVariable Long id) {
 		Empleados empleado = empleadoService.findById(id);
 		clientes.setEmpleados(empleado);
-		
-		
-		
 		return clienteService.save(clientes);
 	}
 	

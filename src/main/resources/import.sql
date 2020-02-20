@@ -15,4 +15,4 @@ INSERT INTO vehiculos (id, anio, create_at, marca, modelo) VALUES (NULL, '2020',
 
 INSERT INTO clientes (id, apellidos, correo_electronico, create_at, detalle, nombres, profesion, telefono_casa, telefono_movil, empleado_id) VALUES (NULL, 'Correa', 'ra.correa90@gmail.com', NULL, 'Cliente desea que le envíen el catálogo del vehículo de su interés', 'Andrés', 'Ingeniero', '072721817', '0986245602', '2');
 
-INSERT INTO clientes_vehiculos (clientes_id, vehiculos_id) VALUES (1, 2), (1, 1);
+INSERT INTO clientes_vehiculos (cliente_id, vehiculo_id) VALUES (1, 2), (1, 1);

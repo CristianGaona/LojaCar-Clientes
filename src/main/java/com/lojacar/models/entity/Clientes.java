@@ -4,9 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +18,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.UniqueConstraint;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -41,11 +41,10 @@ public class Clientes implements Serializable {
 	@JoinColumn(name = "empleado_id", unique = false)
 	private Empleados empleados;
 
-	@JoinTable(name = "clientes_vehiculos",
-			uniqueConstraints= @UniqueConstraint(columnNames={"vehiculo","cliente"}), joinColumns = {
-			@JoinColumn(name = "vehiculo", referencedColumnName = "id", nullable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "cliente", referencedColumnName = "id", nullable = false) })
-	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "clientes_vehiculos", 
+			joinColumns = @JoinColumn(name = "cliente_id", nullable = false), 
+			inverseJoinColumns = @JoinColumn(name = "vehiculo_id", nullable = false))
+	@ManyToMany()
 	private List<Vehiculos> vehiculos;
 
 	@Column(name = "create_at")

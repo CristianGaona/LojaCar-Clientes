@@ -2,15 +2,14 @@ package com.lojacar.models.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -35,10 +34,9 @@ public class Vehiculos implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createAt;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="cliente", referencedColumnName = "id")
-//	private Clientes cliente;
-
+	@ManyToMany(mappedBy = "vehiculos")
+    private List<Clientes> clientes;
+	
 	@PrePersist
 	public void prePersist() {
 		createAt = new Date();
